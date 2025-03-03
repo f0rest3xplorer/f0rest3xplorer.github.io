@@ -1,0 +1,56 @@
+---
+layout: categories
+#This is a test for tabs in the sidebar nav
+---
+
+As of right I only have a few walkthroughs published, but there are many more coming soon!
+
+<h2>2024 HTB Cyber Apocalypse CTF</h2>
+
+<div>
+  <ul class="post-content pl-0">
+    {% for post in site.categories.HTB %}
+      {% if post.tags contains 'ctf' %}
+        <li class="d-flex justify-content-between pl-md-3 pr-md-3">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>&nbsp;({% for tag in post.tags %}
+            {% if tag != "complete" %}
+              {{ tag }}
+              {% if forloop.last %}
+                {% unless post.tags contains "complete" %}/{% endunless %}
+              {% else %}
+                /
+              {% endif %}
+            {% endif %}
+          {% endfor %})
+          <span class="dash flex-grow-1"></span>
+          {% include datetime.html date=post.date wrap='span' class='text-muted small' %}  
+        </li>
+      {% endif %}  
+    {% endfor %}
+  </ul>
+</div>
+
+<h2>Machines</h2>
+  
+<div>
+  <ul class="post-content pl-0">
+    {% for post in site.categories.HTB %}
+      {% if post.tags contains 'complete' %}
+        <li class="d-flex justify-content-between pl-md-3 pr-md-3">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>&nbsp;({% for tag in post.tags %}
+            {% if tag != "complete" %}
+              {{ tag }}
+              {% if forloop.last %}
+                {% unless post.tags contains "complete" %}/{% endunless %}
+              {% else %}
+                /
+              {% endif %}
+            {% endif %}
+          {% endfor %})
+          <span class="dash flex-grow-1"></span>
+          {% include datetime.html date=post.date wrap='span' class='text-muted small' %}  
+        </li>
+      {% endif %}  
+    {% endfor %}
+  </ul>
+</div>
